@@ -16,11 +16,11 @@ react-phone-store/
 │   ├── pages/
 │   ├── services/
 │   ├── hooks/
-│   ├── App.jsx
-│   └── main.jsx
+│   ├── App.tsx
+│   └── main.tsx
 ├── README.md
 ├── package.json
-└── vite.config.js
+└── vite.config.ts
 ```
 
 ## Requisitos
