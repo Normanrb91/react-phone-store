@@ -1,11 +1,10 @@
 
-export interface Product {
-    id: number;
-    name: string;
+export interface ProductListItem {
+    id: string;
     brand: string;
-    price: number;
-    image: string;
-    description: string;
+    model: string;
+    price: string;
+    imgUrl: string;
 }
 
 export interface CartRequest {
