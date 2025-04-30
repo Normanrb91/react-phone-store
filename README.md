@@ -14,6 +14,8 @@ react-phone-store/
 ├── src/
 │   ├── components/
 │   ├── pages/
+│   ├── routes/
+│   │   └── index.tsx
 │   ├── services/
 │   ├── hooks/
 │   ├── App.tsx
