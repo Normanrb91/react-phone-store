@@ -15,7 +15,7 @@ const ProductCard = ({ product }: ProductCardProps) => (
       alt={`${product.brand} ${product.model}`}
       className="w-full h-48 object-contain bg-gray-100 p-2"
     />
-    <div className="p-4 space-y-1">
+    <div className="p-2 space-y-1">
       <h3 className="text-base font-semibold text-gray-800">{product.brand}</h3>
       <p className="text-sm text-gray-600">{product.model}</p>
       <p className="text-blue-600 font-bold text-sm">
