@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import SearchBar from "../components/Searchbar";
 import { ProductListItem } from "../types/api";
 import { getProducts } from "../services/api";
+import ProductGrid from "../components/ProductGrid";
 
 const ProductList = () => {
   const [products, setProducts] = useState<ProductListItem[]>([]);
@@ -28,6 +29,7 @@ const ProductList = () => {
   return (
     <div className="container mx-auto p-4">
       <SearchBar value={query} onChange={setQuery} />
+      <ProductGrid products={filtered} />
     </div>
   );
 };
