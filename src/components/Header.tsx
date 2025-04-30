@@ -15,16 +15,18 @@ const Header = () => {
 
   return (
     <header className="bg-white shadow-md p-4 flex justify-between items-center sticky top-0 z-50">
-      <div className="flex flex-col">
+      <div className="flex flex-col items-start">
+        {" "}
         <Link
           to="/"
           className="text-xl font-bold text-brand-500 hover:opacity-80"
         >
           📱 PhoneStore
         </Link>
-        <Breadcrumb pathnames={pathnames} /> {}
+        <Breadcrumb pathnames={pathnames} />
       </div>
-      <CartInfo cartCount={cartCount} /> {}
+
+      <CartInfo cartCount={cartCount} />
     </header>
   );
 };
