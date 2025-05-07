@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { ProductDetail } from "../types/api";
+import { useCartStore } from "../store/cartStore";
+import { addToCart } from "../services/api";
 
 interface ProductActionsProps {
   product: ProductDetail;
@@ -8,7 +10,8 @@ interface ProductActionsProps {
 const ProductActions = ({ product }: ProductActionsProps) => {
   const [selectedStorage, setSelectedStorage] = useState<number | null>(null);
   const [selectedColor, setSelectedColor] = useState<number | null>(null);
-
+  const [isAdding, setIsAdding] = useState<boolean>(false);
+  const addItem = useCartStore((state) => state.addItem);
   const storageOptions = product.options.storages || [];
   const colorOptions = product.options.colors || [];
 
@@ -21,14 +24,30 @@ const ProductActions = ({ product }: ProductActionsProps) => {
     }
   }, [storageOptions, colorOptions]);
 
-  const handleAddToCart = () => {
-    const productData = {
-      productId: product.id,
-      colorCode: selectedColor,
-      storageCode: selectedStorage,
-    };
+  const handleAddToCart = async () => {
+    if (selectedColor === null || selectedStorage === null) return;
 
-    console.log(productData);
+    setIsAdding(true);
+
+    try {
+      const payload = {
+        id: product.id,
+        colorCode: selectedColor,
+        storageCode: selectedStorage,
+      };
+
+      const response = await addToCart(payload);
+
+      if (response.count) {
+        addItem(response.count);
+      } else {
+        console.error("Error al añadir al carrito");
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsAdding(false);
+    }
   };
 
   return (
@@ -79,7 +98,10 @@ const ProductActions = ({ product }: ProductActionsProps) => {
       <div>
         <button
           onClick={handleAddToCart}
-          className="py-1.5 px-4 cursor-pointer bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+          className={`py-1.5 px-4 cursor-pointer bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition ${
+            isAdding ? "bg-blue-300 cursor-not-allowed" : ""
+          }`}
+          disabled={isAdding}
         >
           Añadir al carrito
         </button>

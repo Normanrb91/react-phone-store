@@ -62,7 +62,7 @@ export interface ProductStorageOption {
 }
 
 export interface CartRequest {
-    id: number;
+    id: string;
     colorCode: number;
     storageCode: number;
 }

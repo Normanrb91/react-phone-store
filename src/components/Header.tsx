@@ -1,16 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
 import Breadcrumb from "./Breadcrumb";
 import CartInfo from "./CartInfo";
+import { useCartStore } from "../store/cartStore";
 
 const Header = () => {
   const location = useLocation();
-  const [cartCount, setCartCount] = useState(0);
-
-  useEffect(() => {
-    setCartCount(Number(localStorage.getItem("cart_count") || 0));
-  }, []);
-
+  const itemCount = useCartStore((state) => state.items);
   const pathnames = location.pathname.split("/").filter((path) => path);
 
   return (
@@ -26,7 +21,7 @@ const Header = () => {
         <Breadcrumb pathnames={pathnames} />
       </div>
 
-      <CartInfo cartCount={cartCount} />
+      <CartInfo cartCount={itemCount} />
     </header>
   );
 };
