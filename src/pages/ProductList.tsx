@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import SearchBar from "../components/Searchbar";
 import { ProductListItem } from "../types/api";
 import { getProducts } from "../services/api";
+import SearchBar from "../components/SearchBar";
 import ProductGrid from "../components/ProductGrid";
 import Pagination from "../components/Pagination";
 
