@@ -1,27 +1,28 @@
-import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getProductById } from "../services/api";
 import type { ProductDetail } from "../types/api";
 import { ChevronLeft, Loader } from "lucide-react";
 import ProductDetailsInfo from "../components/ProductDetailInfo";
 import ProductActions from "../components/ProductActions";
+import { useProductDetail } from "../queries/useProductDetail";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const [product, setProduct] = useState<ProductDetail | null>(null);
+  const { data: product, isLoading, error } = useProductDetail(id!);
 
-  useEffect(() => {
-    if (id) {
-      getProductById(id).then(setProduct);
-    }
-  }, [id]);
-
-  if (!product)
+  if (isLoading)
     return (
       <div className="flex justify-center items-center h-64">
         <Loader className="animate-spin text-blue-600" size={32} />
       </div>
     );
+
+  if (error || !product) {
+    return (
+      <div className="text-center text-red-500 mt-10">
+        Error loading product details.
+      </div>
+    );
+  }
 
   return (
     <>
