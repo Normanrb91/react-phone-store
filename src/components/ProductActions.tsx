@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ProductDetail } from "../types/api";
+import type { ProductDetail } from "../types/api";
 import { useCartStore } from "../store/cartStore";
 import { addToCart } from "../services/api";
 

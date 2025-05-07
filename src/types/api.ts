@@ -67,7 +67,6 @@ export interface CartRequest {
     storageCode: number;
 }
 
-
 export interface CartResponse {
     count: number;
 }

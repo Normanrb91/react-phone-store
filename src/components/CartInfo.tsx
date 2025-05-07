@@ -4,7 +4,7 @@ interface CartInfoProps {
   cartCount: number;
 }
 
-const CartInfo: React.FC<CartInfoProps> = ({ cartCount }) => {
+const CartInfo = ({ cartCount }: CartInfoProps) => {
   return (
     <div className="relative flex items-center">
       <ShoppingCart size={28} className="text-blue-600" />

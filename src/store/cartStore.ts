@@ -10,7 +10,7 @@ export const useCartStore = create<CartState>()(
   persist(
     (set) => ({
       items: 0,
-      addItem: (numItems) => set((state) => ({ items: state.items + numItems })),
+      addItem: (numItems) => set(() => ({ items: numItems })),
     }),
     {
       name: 'cart-storage',

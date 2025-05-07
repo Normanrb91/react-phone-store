@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ProductListItem } from "../types/api";
+import type { ProductListItem } from "../types/api";
 import SearchBar from "../components/SearchBar";
 import ProductGrid from "../components/ProductGrid";
 import Pagination from "../components/Pagination";
@@ -9,7 +9,7 @@ import { Loader } from "lucide-react";
 const PRODUCTS_PER_PAGE = 8;
 
 const ProductList = () => {
-  const { data: products, isLoading, isError, error } = useProductList();
+  const { data: products, isLoading, error } = useProductList();
   const [filtered, setFiltered] = useState<ProductListItem[]>([]);
   const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
