@@ -12,13 +12,16 @@ Esta SPA permite ver un listado de productos móviles y acceder al detalle de ca
 react-phone-store/
 ├── public/
 ├── src/
+│   ├── assets/
 │   ├── components/
 │   ├── pages/
+│   ├── queries/
 │   ├── routes/
-│   │   └── index.tsx
 │   ├── services/
-│   ├── hooks/
+│   ├── store/
+│   ├── types/
 │   ├── App.tsx
+│   ├── index.css
 │   └── main.tsx
 ├── README.md
 ├── package.json
@@ -27,7 +30,7 @@ react-phone-store/
 
 ## Requisitos
 
-- Node.js v14 o superior
+- Node.js v20.5 o superior
 - npm
 
 ## Instalación
@@ -47,9 +50,8 @@ npm install
 
 ## Scripts disponibles
 
-- `npm run start` — Inicia la aplicación en modo desarrollo
+- `npm run dev` — Inicia la aplicación en modo desarrollo
 - `npm run build` — Genera la compilación para producción
-- `npm run test` — Ejecuta el conjunto de tests (Vitest)
 - `npm run lint` — Ejecuta ESLint sobre el código
 
 ## Uso
