@@ -53,6 +53,7 @@ npm install
 - `npm run dev` — Inicia la aplicación en modo desarrollo
 - `npm run build` — Genera la compilación para producción
 - `npm run lint` — Ejecuta ESLint sobre el código
+- `npm run test` — Ejecuta las pruebas con Vitest
 
 ## Uso
 
